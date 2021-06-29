@@ -8,7 +8,7 @@ Feature: check locations functionality
     And region and language button is clicked
     Then home page language should be changed to Ukrainian
 
-    When Europe button is clicked on Our offices part of the page
+    When Europe button is visible on Our offices part of the page
     And  Ukraine icon is appeared on Our offices part of the page
     Then Ukraine button is clicked
     And Lviv location is visible

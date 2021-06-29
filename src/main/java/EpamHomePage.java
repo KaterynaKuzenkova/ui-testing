@@ -1,29 +1,18 @@
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 
 public class EpamHomePage extends TestBaseSetup {
 
-    // @FindBy(className = "/html/body/div[1]/div[1]/div/div/div[2]/button/span")//span[text()='Принять']")
-    //  WebElement cookiesAccepting;
 
-    @FindBy(xpath = "//*[@id=\"wrapper\"]/div[2]/div[1]/header/div/ul/li[2]/div/button")//"//location-selector-ui header__control")
-    WebElement locationSelectorButton;
-
-    @FindBy(xpath = "//location-selector__link[@lang='uk']")
-    WebElement ukraineSelectorButton;
-
-    @FindBy(xpath = "/no-touchevents no-focus[@lang='uk-UA']")
-    WebElement languageVerificationPath;
-
-    @FindBy(xpath = "//tabs__link js-tabs-link active[@data-item ='0']")
-    WebElement europeButton;
-
-    //public void setCookiesAccepting() {
-    //     cookiesAccepting.click();
-    // }
+    private final By locationSelectorButton = By.xpath("//*[@id=\"wrapper\"]/div[2]/div[1]/header/div/ul/li[2]/div/button");
+    private final By ukraineSelectorButton = By.xpath("//*[@id=\"wrapper\"]/div[2]/div[1]/header/div/ul/li[2]/div/nav/ul/li[8]/a");
+    private final By languageVerificationPath = By.xpath("/html");
+    private final By europeButton = By.xpath("//*[@id=\"id-b5812e2d-88b1-359c-a737-eafe8d08343f\"]/div[1]/div/div[1]/a");
+    private final By arrowButton = By.xpath("//*[@id=\"id-b5812e2d-88b1-359c-a737-eafe8d08343f\"]/div[2]/div/div/div[1]/div[2]/button[1]");
+    private final By ukraineButton = By.xpath("//*[@id=\"id-b5812e2d-88b1-359c-a737-eafe8d08343f\"]/div[2]/div/div/div[1]/div[1]/div/div[23]/div/button/div[1]");
 
     public void openHomePage() {
+
         getDriver().get(getHomePageUrl());
     }
 
@@ -33,25 +22,28 @@ public class EpamHomePage extends TestBaseSetup {
     }
 
     public void clickRegionAndLanguageButton() {
-        //   setCookiesAccepting();
         getDriver().findElement(locationSelectorButton).click();
-        locationSelectorButton.click();
     }
 
-    public void changeRegionToUkraine() {
-        ukraineSelectorButton.click();
+    public void changeRegionToUkraine() throws InterruptedException {
+        Thread.sleep(2000);
+        getDriver().findElement(ukraineSelectorButton).click();
     }
 
-    public void validatePageLanguage() {
-        //String currentLanguage = languageVerificationPath.
+    public void validatePageLanguage() throws InterruptedException {
+        Thread.sleep(2000);
+        String currentLanguage = getDriver().findElement(languageVerificationPath).getAttribute("lang");
+        Assert.assertEquals(currentLanguage, "uk-UA", "language on the page is not correct");
     }
 
-    public void clickEuropeButton() {
-        europeButton.click();
+    public void validateIfEuropeButtonIsVisible() throws InterruptedException {
+        Thread.sleep(2000);
+        getDriver().findElement(europeButton).isDisplayed();
     }
 
-    public void checkThatIconIsUkraine() {
-
+    public void checkThatIconIsUkraine() throws InterruptedException {
+        Thread.sleep(2000);
+        // getDriver().findElement(arrowButton).wait(getDriver().findElement(ukraineButton).isDisplayed());
     }
 
     public void clickUkraineButton() {
