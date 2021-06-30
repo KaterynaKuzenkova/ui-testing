@@ -8,7 +8,7 @@ public class EpamHomePage extends TestBaseSetup {
     private final By ukraineSelectorButton = By.xpath("//a[contains(@class, 'location-selector__link') and contains(@lang, 'uk')]");
     private final By languageVerificationPath = By.xpath("/html");
     private final By europeButton = By.xpath("//a[contains(@class, 'tabs__link js-tabs-link active') and text() = 'EMEA']");
-    private final By arrowButton = By.xpath("//*[@id=\"id-b5812e2d-88b1-359c-a737-eafe8d08343f\"]/div[2]/div/div/div[1]/div[2]/button[1]");
+    private final By arrowButton = By.xpath("//div[@class='owl-nav']/button[contains(@class, 'owl-prev') and text()='Previous']");
     private final By ukraineButton = By.xpath("//*[@id=\"id-b5812e2d-88b1-359c-a737-eafe8d08343f\"]/div[2]/div/div/div[1]/div[1]/div/div[23]/div/button/div[1]");
 
     public void openHomePage() {
@@ -43,6 +43,7 @@ public class EpamHomePage extends TestBaseSetup {
 
     public void checkThatIconIsUkraine() throws InterruptedException {
         Thread.sleep(2000);
+        getDriver().findElement(arrowButton).click();
         // getDriver().findElement(arrowButton).wait(getDriver().findElement(ukraineButton).isDisplayed());
     }
 
