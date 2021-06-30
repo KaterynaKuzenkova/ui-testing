@@ -4,10 +4,10 @@ import org.testng.Assert;
 public class EpamHomePage extends TestBaseSetup {
 
 
-    private final By locationSelectorButton = By.xpath("//*[@id=\"wrapper\"]/div[2]/div[1]/header/div/ul/li[2]/div/button");
-    private final By ukraineSelectorButton = By.xpath("//*[@id=\"wrapper\"]/div[2]/div[1]/header/div/ul/li[2]/div/nav/ul/li[8]/a");
+    private final By locationSelectorButton = By.xpath("//button[@class='location-selector__button']");
+    private final By ukraineSelectorButton = By.xpath("//a[contains(@class, 'location-selector__link') and contains(@lang, 'uk')]");
     private final By languageVerificationPath = By.xpath("/html");
-    private final By europeButton = By.xpath("//*[@id=\"id-b5812e2d-88b1-359c-a737-eafe8d08343f\"]/div[1]/div/div[1]/a");
+    private final By europeButton = By.xpath("//a[contains(@class, 'tabs__link js-tabs-link active') and text() = 'EMEA']");
     private final By arrowButton = By.xpath("//*[@id=\"id-b5812e2d-88b1-359c-a737-eafe8d08343f\"]/div[2]/div/div/div[1]/div[2]/button[1]");
     private final By ukraineButton = By.xpath("//*[@id=\"id-b5812e2d-88b1-359c-a737-eafe8d08343f\"]/div[2]/div/div/div[1]/div[1]/div/div[23]/div/button/div[1]");
 
