@@ -9,7 +9,7 @@ public class EpamHomePage extends TestBaseSetup {
     private final By languageVerificationPath = By.xpath("/html");
     private final By europeButton = By.xpath("//a[contains(@class, 'tabs__link js-tabs-link active') and text() = 'EMEA']");
     private final By arrowButton = By.xpath("//div[@class='owl-nav']/button[contains(@class, 'owl-prev') and text()='Previous']");
-    private final By ukraineButton = By.xpath("//*[@id=\"id-b5812e2d-88b1-359c-a737-eafe8d08343f\"]/div[2]/div/div/div[1]/div[1]/div/div[23]/div/button/div[1]");
+    private final By ukraineButton = By.xpath("//div[@class='owl-item active']/div/button/div[contains(@class, 'locations-viewer__country-title') and text()='Україна']");
 
     public void openHomePage() {
 
