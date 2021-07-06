@@ -1,5 +1,10 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
+
+import java.util.List;
 
 public class EpamHomePage extends TestBaseSetup {
 
@@ -10,6 +15,10 @@ public class EpamHomePage extends TestBaseSetup {
     private final By europeButton = By.xpath("//a[contains(@class, 'tabs__link js-tabs-link active') and text() = 'EMEA']");
     private final By arrowButton = By.xpath("//div[@class='owl-nav']/button[contains(@class, 'owl-prev') and text()='Previous']");
     private final By ukraineButton = By.xpath("//div[@class='owl-item active']/div/button/div[contains(@class, 'locations-viewer__country-title') and text()='Україна']");
+    @FindBy(xpath = "//div[@class='tabs__item js-tabs-item active']/div/div/div/div[@class='owl-stage-outer']")
+    List<WebElement> countriesBlockList;
+    private final By lvivLocationElement = By.xpath("//h5[contains(@class, 'locations-viewer__office-name') and text()='Львів']");
+    private final By lvivLocationNumber = By.xpath("//a[contains(@class, 'locations-viewer__phone') and text()='+38-044-390-5457']");
 
     public void openHomePage() {
 
@@ -38,13 +47,15 @@ public class EpamHomePage extends TestBaseSetup {
 
     public void validateIfEuropeButtonIsVisible() throws InterruptedException {
         Thread.sleep(2000);
-        getDriver().findElement(europeButton).isDisplayed();
+        Assert.assertEquals(true, getDriver().findElement(europeButton).isDisplayed());
     }
 
     public void checkThatIconIsUkraine() throws InterruptedException {
         Thread.sleep(2000);
-        getDriver().findElement(arrowButton).click();
-        // getDriver().findElement(arrowButton).wait(getDriver().findElement(ukraineButton).isDisplayed());
+        try {
+            getDriver().findElement(arrowButton).click();
+        } catch (WebDriverException e) {// getDriver().findElement(arrowButton).wait(getDriver().findElement(ukraineButton).isDisplayed());
+        }
     }
 
     public void clickUkraineButton() {
@@ -52,10 +63,12 @@ public class EpamHomePage extends TestBaseSetup {
     }
 
     public void validateIfLvivLocationIsVisible() {
+        Assert.assertEquals(true, getDriver().findElement(lvivLocationElement).isDisplayed());
     }
 
     public void validateIfLvivLocationNumberIsVisible() {
-
+        Assert.assertEquals(true, getDriver().findElement(lvivLocationNumber).isDisplayed());
+        getDriver().close();
     }
 
 }
