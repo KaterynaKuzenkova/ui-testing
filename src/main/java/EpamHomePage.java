@@ -54,7 +54,8 @@ public class EpamHomePage extends TestBaseSetup {
         Thread.sleep(2000);
         try {
             getDriver().findElement(arrowButton).click();
-        } catch (WebDriverException e) {// getDriver().findElement(arrowButton).wait(getDriver().findElement(ukraineButton).isDisplayed());
+        } catch (WebDriverException e) {
+            System.out.println("element arrowButton not found");
         }
     }
 
